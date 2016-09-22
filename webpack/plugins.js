@@ -7,6 +7,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkCheckerPlugin =
   require('awesome-typescript-loader').ForkCheckerPlugin;
 
+const postcss = require('./postcss');
+
 const sourceMap = process.env.TEST
   ? [new webpack.SourceMapDevToolPlugin({ filename: null, test: /\.ts$/ })]
   : [ ];
@@ -28,6 +30,14 @@ const basePlugins = [
   new CopyWebpackPlugin([
     { from: 'src/assets', to: 'assets' },
   ]),
+  new webpack.LoaderOptionsPlugin({
+    test: /\.css$/,
+    options: {
+      postcss,
+    },
+  }),
+  new webpack.ContextReplacementPlugin(
+    /angular\/core\/(esm\/src|src)\/linker/, __dirname),
 ].concat(sourceMap);
 
 const devPlugins = [
