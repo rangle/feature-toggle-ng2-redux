@@ -1,6 +1,7 @@
 import { IAppState, rootReducer, deimmutify, reimmutify } from './store';
 import { ICounter } from './counter';
 import { ISession } from './session';
+import { IFeatureToggles } from './feature-toggle';
 
 import { dev } from '../configuration';
 const createLogger = require('redux-logger');
@@ -10,6 +11,7 @@ export {
   IAppState,
   ISession,
   ICounter,
+  IFeatureToggles,
   rootReducer,
   reimmutify,
 };

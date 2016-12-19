@@ -17,7 +17,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import {RioSampleApp} from './sample-app';
-import {SessionActions} from '../actions/session.actions';
+import {SessionActions, FeatureToggleActions} from '../actions';
 import {SessionEpics} from '../epics/session.epics';
 import {
   RioAboutPage,
@@ -58,7 +58,8 @@ import { FeatureToggleDirective } from '../directives/';
     NgReduxRouter,
     appRoutingProviders,
     SessionActions,
-    SessionEpics
+    SessionEpics,
+    FeatureToggleActions
   ]
 })
 export class RioSampleAppModule { }

@@ -1,19 +1,29 @@
 import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { NgRedux } from 'ng2-redux';
+import { IAppState } from '../../store';
 
 @Directive({
-    selector: `[featureId]`,
+  selector: `[featureId]`,
 })
 export class FeatureToggleDirective implements OnInit {
-    @Input('featureId') featureToggleId: string;
+  @Input('featureId') featureToggleId: string;
 
+  constructor(
+    private elementRef: ElementRef,
+    private ngRedux: NgRedux<IAppState>) {}
 
-    constructor(private elementRef: ElementRef) {}
-    ngOnInit() {
-        this.toggleFeature();
-    }
+  // This Directive subscribes toggle button event
+  // to add/remove the corresponding element
+  ngOnInit() {
+    var unsubscribe = this.ngRedux.subscribe(() => {
+      let state = this.ngRedux.getState();
+      this.toggleFeature(state.toggles);
+      console.log('subscribe', state);
+    });
+    // unsubscribe();
+  }
 
-    private toggleFeature() {
-        if (this.featureToggleId === 'id1')
-            this.elementRef.nativeElement.style.display = 'none';
-    }
+  private toggleFeature(event) {
+    console.log('toggling', event);
+  }
 }

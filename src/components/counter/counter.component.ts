@@ -34,9 +34,24 @@ import { ICounter } from '../../store';
     </div>
 
     <div class="flex">
-      <button id="toggle-decrementButton"></button>
+
+      <label class="switch">
+        <input type="checkbox"
+        id="toggle-decrementButton"
+        (change)=decrementBtnOnChange($event)>
+
+        <div class="slider round"></div>
+      </label>
+
       <div class="flex-auto flex-center"></div>
-      <button id="toggle-incrementButton"></button>
+
+      <label class="switch">
+        <input type="checkbox"
+        id="toggle-incrementButton"
+        (change)=incrementBtnOnChange($event)>
+
+        <div class="slider round"></div>
+      </label>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,4 +60,19 @@ export class RioCounter {
   @Input() counter: ICounter;
   @Output() increment = new EventEmitter<void>();
   @Output() decrement = new EventEmitter<void>();
+  @Output() toggleFeatureVisibility = new EventEmitter<any>();
+
+  private incrementBtnOnChange(event) {
+    this.toggleFeatureVisibility.emit({
+      id: 'id1',
+      visible: event.target.checked
+    });
+  }
+
+  private decrementBtnOnChange(event) {
+    this.toggleFeatureVisibility.emit({
+      id: 'id2',
+      visible: event.target.checked
+    });
+  }
 };

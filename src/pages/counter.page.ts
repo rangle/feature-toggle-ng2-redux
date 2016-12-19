@@ -2,7 +2,7 @@ import { Component, Inject, ApplicationRef } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { select } from 'ng2-redux';
-import { CounterActions } from '../actions';
+import { CounterActions, FeatureToggleActions } from '../actions';
 import { RioContainer, RioCounter } from '../components';
 import { ICounter } from '../store';
 
@@ -18,13 +18,17 @@ import { ICounter } from '../store';
 
       <rio-counter
         [counter]="counter$ | async"
-        (increment)="actions.increment()"
-        (decrement)="actions.decrement()">
+        (increment)="counterActions.increment()"
+        (decrement)="counterActions.decrement()"
+        (toggleFeatureVisibility)="featureToggleActions.toggleFeatureVisibility($event)">
       </rio-counter>
     </rio-container>
   `
 })
 export class RioCounterPage {
   @select() private counter$: Observable<ICounter>;
-  constructor(private actions: CounterActions) {}
+  constructor(
+    private counterActions: CounterActions,
+    private featureToggleActions: FeatureToggleActions
+  ) {}
 }
