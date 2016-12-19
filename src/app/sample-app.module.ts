@@ -28,6 +28,8 @@ import {RioLoginModule} from '../components/login/login.module';
 import {RioUiModule} from '../components/ui/ui.module';
 import {RioNavigatorModule} from '../components/navigator/navigator.module';
 
+import { FeatureToggleDirective } from '../directives/';
+
 @NgModule({
   imports: [
     FormsModule,
@@ -44,7 +46,8 @@ import {RioNavigatorModule} from '../components/navigator/navigator.module';
     RioSampleApp,
     RioAboutPage,
     RioCounterPage,
-    RioCounter
+    RioCounter,
+    FeatureToggleDirective
   ],
   bootstrap: [
     RioSampleApp

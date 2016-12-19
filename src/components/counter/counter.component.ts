@@ -12,23 +12,31 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-        className="bg-black col-2"
-        (onClick)="decrement.emit()"
-        testid="counter-decrementButton">
-        -
+      featureId="id1"
+      className="bg-black col-2"
+      (onClick)="decrement.emit()"
+      testid="counter-decrementButton">
+      -
       </rio-button>
 
-      <div 
-        data-testid="counter-result"
-        class="flex-auto flex-center center h1">
-        {{ counter.counter }}
+      <div
+      data-testid="counter-result"
+      class="flex-auto flex-center center h1">
+      {{ counter.counter }}
       </div>
 
       <rio-button className="col-2"
-        (onClick)="increment.emit()"
-        testid="counter-incrementButton">
-        +
+      featureId="id2"
+      (onClick)="increment.emit()"
+      testid="counter-incrementButton">
+      +
       </rio-button>
+    </div>
+
+    <div class="flex">
+      <button id="toggle-decrementButton"></button>
+      <div class="flex-auto flex-center"></div>
+      <button id="toggle-incrementButton"></button>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
