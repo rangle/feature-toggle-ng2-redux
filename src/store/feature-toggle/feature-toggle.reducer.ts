@@ -2,18 +2,11 @@ import { IPayloadAction } from '../../actions';
 import {Action} from 'redux';
 import { FeatureToggleActions } from '../../actions';
 import { INITIAL_STATE } from './feature-toggle.initial-state';
-import { IFeatureTogglesRecord } from './feature-toggle.types';
-
-console.log('INITIAL_STATE', INITIAL_STATE)
+import { IToggleRecord } from './feature-toggle.types';
 
 export function featureToggleReducer(
-  state: IFeatureTogglesRecord = INITIAL_STATE,
-  action: IPayloadAction): IFeatureTogglesRecord {
-    console.log('state', state)
-    // state true
-
-    // Array
-
+  state: IToggleRecord = INITIAL_STATE,
+  action: IPayloadAction): IToggleRecord {
     switch (action.type) {
       case FeatureToggleActions.TOGGLE_FEATURE:
         var target = action.payload;

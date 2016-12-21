@@ -7,7 +7,7 @@ import * as featureToggle from './feature-toggle';
 export interface IAppState {
   counter?: counter.ICounter;
   session?: session.ISession;
-  toggles?: featureToggle.IFeatureToggles;
+  toggles?: featureToggle.IToggle;
 };
 
 export const rootReducer = combineReducers<IAppState>({
@@ -30,7 +30,7 @@ export function reimmutify(plain) {
   return {
     counter: counter.CounterFactory(plain.counter),
     session: session.SessionFactory(plain.session),
-    toggles: featureToggle.FeatureToggleFactory(plain.toggles),
+    toggles: featureToggle.ToggleFactory(plain.toggles),
     router: plain.router,
   };
 }

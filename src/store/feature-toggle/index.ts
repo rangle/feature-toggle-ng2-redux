@@ -1,9 +1,9 @@
-import { IFeatureToggles } from './feature-toggle.types';
+import { IToggle } from './feature-toggle.types';
 import { featureToggleReducer } from './feature-toggle.reducer';
-import { FeatureToggleFactory } from './feature-toggle.initial-state';
+import { ToggleFactory } from './feature-toggle.initial-state';
 
 export {
-  IFeatureToggles,
+  IToggle,
   featureToggleReducer,
-  FeatureToggleFactory,
+  ToggleFactory,
 }
