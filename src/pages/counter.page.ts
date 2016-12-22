@@ -20,7 +20,7 @@ import { ICounter } from '../store';
         [counter]="counter$ | async"
         (increment)="counterActions.increment()"
         (decrement)="counterActions.decrement()"
-        (toggleFeatureVisibility)="featureToggleActions.toggleFeatureVisibility($event)">
+        (onToggle)="featureToggleActions.toggleFeatureVisibility($event)">
       </rio-counter>
     </rio-container>
   `

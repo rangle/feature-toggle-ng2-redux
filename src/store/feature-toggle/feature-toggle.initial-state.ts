@@ -9,6 +9,8 @@ const defaultToggle = {
   id2: true
 };
 
-export const ToggleFactory = makeTypedFactory<IToggle, IToggleRecord>(defaultToggle);
+export const ToggleFactory = makeTypedFactory<IToggle, IToggleRecord>(
+  defaultToggle
+);
 
 export const INITIAL_STATE = ToggleFactory();

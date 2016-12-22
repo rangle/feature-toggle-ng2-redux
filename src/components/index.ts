@@ -13,6 +13,7 @@ import {
   RioLabel,
   RioInput
 } from './form';
+import { RioToggle } from './toggle';
 
 export {
   RioAlert,
@@ -30,5 +31,6 @@ export {
   RioModal,
   RioModalContent,
   RioNavigator,
-  RioNavigatorItem
+  RioNavigatorItem,
+  RioToggle
 };

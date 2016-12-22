@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RioAlert} from '../alert/alert.component';
 import {RioButton} from '../button/button.component';
 import {RioLogo} from '../logo/logo.component';
+import {RioToggle} from '../toggle/toggle.component';
 import {RioContainer} from '../container/container.component';
 
 @NgModule({
@@ -13,13 +14,15 @@ import {RioContainer} from '../container/container.component';
     RioAlert,
     RioButton,
     RioLogo,
-    RioContainer
+    RioContainer,
+    RioToggle
   ],
   exports: [
     RioAlert,
     RioButton,
     RioLogo,
-    RioContainer
+    RioContainer,
+    RioToggle
   ]
 })
 export class RioUiModule { }

@@ -12,7 +12,7 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-      featureId="id1"
+      *featureId="id1"
       className="bg-black col-2"
       (onClick)="decrement.emit()"
       testid="counter-decrementButton">
@@ -26,7 +26,7 @@ import { ICounter } from '../../store';
       </div>
 
       <rio-button className="col-2"
-      featureId="id2"
+      *featureId="id2"
       (onClick)="increment.emit()"
       testid="counter-incrementButton">
       +
@@ -34,24 +34,17 @@ import { ICounter } from '../../store';
     </div>
 
     <div class="flex">
-
-      <label class="switch">
-        <input type="checkbox"
-        id="toggle-decrementButton"
-        (change)=decrementBtnOnChange($event)>
-
-        <div class="slider round"></div>
-      </label>
+      <rio-toggle
+        [matchFeatureId]="id1"
+        (onToggle)="decrementBtnOnChange($event)">
+      </rio-toggle>
 
       <div class="flex-auto flex-center"></div>
 
-      <label class="switch">
-        <input type="checkbox"
-        id="toggle-incrementButton"
-        (change)=incrementBtnOnChange($event)>
-
-        <div class="slider round"></div>
-      </label>
+      <rio-toggle
+        [matchFeatureId]="id2"
+        (onToggle)="incrementBtnOnChange($event)">
+      </rio-toggle>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,18 +53,21 @@ export class RioCounter {
   @Input() counter: ICounter;
   @Output() increment = new EventEmitter<void>();
   @Output() decrement = new EventEmitter<void>();
-  @Output() toggleFeatureVisibility = new EventEmitter<any>();
+  @Output() onToggle = new EventEmitter<any>();
 
-  private incrementBtnOnChange(event) {
-    this.toggleFeatureVisibility.emit({
-      id: 'id1',
+  id1: string = 'id1';
+  id2: string = 'id2';
+
+  private decrementBtnOnChange(event) {
+    this.onToggle.emit({
+      id: this.id1,
       visible: event.target.checked
     });
   }
 
-  private decrementBtnOnChange(event) {
-    this.toggleFeatureVisibility.emit({
-      id: 'id2',
+  private incrementBtnOnChange(event) {
+    this.onToggle.emit({
+      id: this.id2,
       visible: event.target.checked
     });
   }
