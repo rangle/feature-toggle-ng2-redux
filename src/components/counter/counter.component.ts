@@ -12,7 +12,16 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-      *featureId="id1"
+      *featureid="id1"
+      hide-feature
+      className="bg-green col-2"
+      (onClick)="decrement.emit()"
+      testid="counter-decrementButton">
+      -
+      </rio-button>
+
+      <rio-button
+      *featureid="id1"
       className="bg-black col-2"
       (onClick)="decrement.emit()"
       testid="counter-decrementButton">
@@ -26,7 +35,7 @@ import { ICounter } from '../../store';
       </div>
 
       <rio-button className="col-2"
-      *featureId="id2"
+      *featureid="id2"
       (onClick)="increment.emit()"
       testid="counter-incrementButton">
       +

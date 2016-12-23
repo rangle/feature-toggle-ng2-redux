@@ -2,6 +2,7 @@ import {
   Directive,
   Input,
   OnInit,
+  AfterViewInit,
   TemplateRef,
   ViewContainerRef
 } from '@angular/core';
@@ -10,15 +11,16 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../../store';
 
 @Directive({
-  selector: `[featureId]`,
+  selector: `[featureid]`,
 })
-export class FeatureToggleDirective implements OnInit {
-  @Input() set featureId(id: string) {
+export class FeatureToggleDirective implements OnInit, AfterViewInit {
+  @Input() set featureid(id: string) {
     this.id = id;
   }
 
   id: string;
   view: any = null;
+  hideFeature: boolean = false;
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -37,16 +39,58 @@ export class FeatureToggleDirective implements OnInit {
     // unsubscribe();
   }
 
+  ngAfterViewInit() {
+    let target = this.templateRef.elementRef.nativeElement.nextElementSibling;
+    if (target) {
+      this.hideFeature = target.hasAttribute('hide-feature');
+    }
+
+    this.toggleFeature();
+  }
+
+  private createView() {
+    this.view = this.viewContainer.createEmbeddedView(this.templateRef);
+  }
+
+  private clearViewContainer() {
+    this.viewContainer.clear();
+    this.view = null;
+  }
+
   private toggleFeature() {
     let state = this.ngRedux.getState().toggles;
     let nextVisibility = state[this.id];
 
-    if (nextVisibility && this.view === null) {
-      this.view = this.viewContainer.createEmbeddedView(this.templateRef);
-    } else if (!nextVisibility && this.view !== null) {
-      this.viewContainer.clear();
-      this.view = null;
-    }
-  }
+    // show component if it's currently hidden and toggle is on
+    // if (nextVisibility && this.view === null) {
+    //   if (!this.hideFeature) {
+    //     this.createView();
+    //   }
+    // } else if (!nextVisibility && this.view !== null) {
+    //   this.clearViewContainer();
+    // }
 
+    if (nextVisibility) {
+      if (this.view === null) {
+        if (!this.hideFeature) {
+          this.createView();
+        }
+      } else {
+        if (this.hideFeature) {
+          this.clearViewContainer();
+        }
+      }
+    } else {
+      if (this.view === null) {
+        if (this.hideFeature) {
+          this.createView();
+        }
+      } else {
+        if (!this.hideFeature) {
+          this.clearViewContainer();
+        }
+      }
+    }
+
+  }
 }
