@@ -34,7 +34,9 @@ export class RioToggle implements OnInit {
 
     // update toggle buttons with the intial state
     if (initialState[this.matchFeatureId]) {
-      this.elementRef.nativeElement.children[0].children[0].setAttribute('checked', 'checked');
+      this.elementRef.nativeElement
+        .children[0].children[0]
+        .setAttribute('checked', 'checked');
     }
   }
 

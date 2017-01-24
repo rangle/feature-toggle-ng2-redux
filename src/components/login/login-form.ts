@@ -29,6 +29,7 @@ import {
         testid="login-username">
         <rio-label qaid="qa-uname-label">Username</rio-label>
         <rio-input
+          name="username"
           qaid="qa-uname-input"
           inputType='text'
           placeholder='Username'
@@ -44,6 +45,7 @@ import {
         testid="login-password">
         <rio-label qaid="qa-password-label">Password</rio-label>
         <rio-input
+          name="password"
           qaid="qa-password-input"
           inputType='password'
           placeholder='Password'

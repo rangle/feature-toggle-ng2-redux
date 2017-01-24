@@ -41,6 +41,7 @@
     "express": "^4.13.4",
     "helmet": "^2.0.0",
     "http-proxy": "^1.13.2",
+    "redux-beacon": "0.1.x",
     "winston": "^2.1.1"
   },
   "devDependencies": {
