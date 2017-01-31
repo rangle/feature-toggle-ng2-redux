@@ -33,14 +33,14 @@ export class FeatureToggleDirective implements OnInit, AfterViewInit {
     // first time without state change
     this.toggleFeature();
 
-    let unsubscribe = this.ngRedux.subscribe(() => {
+    const unsubscribe = this.ngRedux.subscribe(() => {
       this.toggleFeature();
     });
     // unsubscribe();
   }
 
   ngAfterViewInit() {
-    let target = this.templateRef.elementRef.nativeElement.nextElementSibling;
+    const target = this.templateRef.elementRef.nativeElement.nextElementSibling;
     if (target) {
       this.hideFeature = target.hasAttribute('hide-feature');
     }
@@ -58,8 +58,8 @@ export class FeatureToggleDirective implements OnInit, AfterViewInit {
   }
 
   private toggleFeature() {
-    let state = this.ngRedux.getState().toggles;
-    let nextVisibility = state[this.id];
+    const state = this.ngRedux.getState().toggles[this.id];
+    const nextVisibility = state.isEnabled;
 
     // show component if it's currently hidden and toggle is on
     // if (nextVisibility && this.view === null) {

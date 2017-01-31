@@ -12,7 +12,7 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-      *featureid="id1"
+      *featureid="feature1"
       hide-feature
       className="bg-green col-2"
       (onClick)="decrement.emit()"
@@ -21,7 +21,7 @@ import { ICounter } from '../../store';
       </rio-button>
 
       <rio-button
-      *featureid="id1"
+      *featureid="feature1"
       className="bg-black col-2"
       (onClick)="decrement.emit()"
       testid="counter-decrementButton">
@@ -35,7 +35,7 @@ import { ICounter } from '../../store';
       </div>
 
       <rio-button className="col-2"
-      *featureid="id2"
+      *featureid="feature2"
       (onClick)="increment.emit()"
       testid="counter-incrementButton">
       +
@@ -44,14 +44,14 @@ import { ICounter } from '../../store';
 
     <div class="flex">
       <rio-toggle
-        [matchFeatureId]="id1"
+        [matchFeatureId]="feature1"
         (onToggle)="decrementBtnOnChange($event)">
       </rio-toggle>
 
       <div class="flex-auto flex-center"></div>
 
       <rio-toggle
-        [matchFeatureId]="id2"
+        [matchFeatureId]="feature2"
         (onToggle)="incrementBtnOnChange($event)">
       </rio-toggle>
     </div>
@@ -64,20 +64,20 @@ export class RioCounter {
   @Output() decrement = new EventEmitter<void>();
   @Output() onToggle = new EventEmitter<any>();
 
-  id1: string = 'id1';
-  id2: string = 'id2';
+  feature1: string = 'feature1';
+  feature2: string = 'feature2';
 
   private decrementBtnOnChange(event) {
     this.onToggle.emit({
-      id: this.id1,
-      visible: event.target.checked
+      id: this.feature1,
+      isEnabled: event.target.checked
     });
   }
 
   private incrementBtnOnChange(event) {
     this.onToggle.emit({
-      id: this.id2,
-      visible: event.target.checked
+      id: this.feature2,
+      isEnabled: event.target.checked
     });
   }
 };
