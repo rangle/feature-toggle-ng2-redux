@@ -12,8 +12,7 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-      *featureid="feature1"
-      hide-feature
+      *hideIfFeature="feature1"
       className="bg-green col-2"
       (onClick)="decrement.emit()"
       testid="counter-decrementButton">
@@ -21,7 +20,7 @@ import { ICounter } from '../../store';
       </rio-button>
 
       <rio-button
-      *featureid="feature1"
+      *showIfFeature="feature1"
       className="bg-black col-2"
       (onClick)="decrement.emit()"
       testid="counter-decrementButton">
@@ -35,7 +34,7 @@ import { ICounter } from '../../store';
       </div>
 
       <rio-button className="col-2"
-      *featureid="feature2"
+      *showIfFeature="feature2"
       (onClick)="increment.emit()"
       testid="counter-incrementButton">
       +
@@ -69,15 +68,13 @@ export class RioCounter {
 
   private decrementBtnOnChange(event) {
     this.onToggle.emit({
-      id: this.feature1,
-      isEnabled: event.target.checked
+      [this.feature1]: event.target.checked
     });
   }
 
   private incrementBtnOnChange(event) {
     this.onToggle.emit({
-      id: this.feature2,
-      isEnabled: event.target.checked
+      [this.feature2]: event.target.checked
     });
   }
 };

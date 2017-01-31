@@ -9,7 +9,7 @@ import { IAppState } from '../store';
 export class InputActions {
   time: number = 0;
 
-  constructor(private ngRedux: NgRedux<IAppState>){}
+  constructor(private ngRedux: NgRedux<IAppState>) {}
 
   /**
    * function to call when starting to edit an input field
@@ -25,7 +25,7 @@ export class InputActions {
    * @param {string} status - the status of the form control
    * @param {string} error - the error of the form control
    */
-  finishEditing(fieldName: string, status: string, error?:string) {
+  finishEditing(fieldName: string, status: string, error?: string) {
     this.time = Date.now() - this.time;
     this.ngRedux.dispatch({
       type: `${fieldName}_FINISH`,
@@ -34,6 +34,6 @@ export class InputActions {
         error,
         time: this.time,
       },
-    })
+    });
   }
 }

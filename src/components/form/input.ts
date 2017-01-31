@@ -26,7 +26,7 @@ export class RioInput {
   @Input() placeholder = '';
   @Input() control: FormControl = new FormControl();
   @Input() qaid: string;
-  @Input() name: string="";
+  @Input() name: string = '';
 
   constructor(private actions: InputActions) {}
 };

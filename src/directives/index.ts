@@ -1,5 +1,9 @@
-import { FeatureToggleDirective } from './feature-toggle';
+import {
+  ShowIfFeatureDirective,
+  HideIfFeatureDirective
+} from './feature-toggle';
 
 export {
-  FeatureToggleDirective
+  ShowIfFeatureDirective,
+  HideIfFeatureDirective
 };

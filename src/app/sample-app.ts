@@ -41,7 +41,7 @@ const eventsMap = {
   'LOGIN_USER_SUCCESS': {
     eventFields: action => ({
       hitType: 'pageview',
-      page:`/login_form_completed`,
+      page: `/login_form_completed`,
       title: `Login Form Completed`,
       location: '/login_form_completed'
     })
@@ -55,10 +55,18 @@ const eventsMap = {
   }
 };
 
-import { LoginFormEventsMap } from '../helpers/event-map-helper';
+import { LoginFormEventsMap } from '../services';
 // (Redux Beacon) createMiddleware
-// const analyticsMiddleware = createMiddleware(eventsMap, GoogleTagManager, { logger });
-// const segmentMiddleware = createMiddleware(eventsMap, segment, { logger });
+// const analyticsMiddleware = createMiddleware(
+//   eventsMap,
+//   GoogleTagManager,
+//   { logger }
+// );
+// const segmentMiddleware = createMiddleware(
+//   eventsMap,
+//   segment,
+//   { logger }
+// );
 
 import {
   RioButton,

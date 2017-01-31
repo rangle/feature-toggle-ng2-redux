@@ -13,10 +13,7 @@ export function featureToggleReducer(
       case FeatureToggleActions.TOGGLE_FEATURE:
         const payload = action.payload;
         // toggleRouter.setFeatureState(payload);
-        return state.updateIn([payload.id], val => {
-          val.isEnabled = payload.isEnabled;
-          return val;
-        });
+        return state.merge(payload);
 
       case SessionActions.LOGOUT_USER:
         return state.merge(INITIAL_STATE);

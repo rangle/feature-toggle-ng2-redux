@@ -9,7 +9,7 @@ function getEventsMapForInput(fieldName: string, formName: string): any {
     [`${fieldName}_START`]: {
       eventFields: action => ({
         hitType: 'pageview',
-        page:`/${formName}_${fieldName}_start`,
+        page: `/${formName}_${fieldName}_start`,
         title: `Start Editing in ${formName} ${fieldName}`,
         location: `/${formName}_${fieldName}_start`
       })
@@ -18,7 +18,7 @@ function getEventsMapForInput(fieldName: string, formName: string): any {
       {
         eventFields: action => ({
           hitType: 'pageview',
-          page:`/${formName}_${fieldName}_finish`,
+          page: `/${formName}_${fieldName}_finish`,
           title: `Finish Editing in ${formName} ${fieldName}`,
           location: `/${formName}_${fieldName}_finish`
         })

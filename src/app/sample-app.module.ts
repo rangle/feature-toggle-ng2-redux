@@ -28,7 +28,10 @@ import {RioLoginModule} from '../components/login/login.module';
 import {RioUiModule} from '../components/ui/ui.module';
 import {RioNavigatorModule} from '../components/navigator/navigator.module';
 
-import { FeatureToggleDirective } from '../directives/';
+import {
+  ShowIfFeatureDirective,
+  HideIfFeatureDirective
+} from '../directives/';
 
 @NgModule({
   imports: [
@@ -47,7 +50,8 @@ import { FeatureToggleDirective } from '../directives/';
     RioAboutPage,
     RioCounterPage,
     RioCounter,
-    FeatureToggleDirective
+    ShowIfFeatureDirective,
+    HideIfFeatureDirective
   ],
   bootstrap: [
     RioSampleApp

@@ -3,8 +3,9 @@ import {
   EventEmitter,
   Input,
   Output,
-  OnInit,
-  ElementRef
+  AfterViewInit,
+  ElementRef,
+  ViewChild
 } from '@angular/core';
 
 import { NgRedux } from 'ng2-redux';
@@ -15,28 +16,27 @@ import { IAppState } from '../../store';
   template: `
     <label class="switch">
       <input
-      type="checkbox"
-      (change)=toggleHandler($event)>
+        #toggleButton
+        type="checkbox"
+        (change)=toggleHandler($event)>
       <div class="slider round"></div>
     </label>
   `
 })
-export class RioToggle implements OnInit {
+export class RioToggle implements AfterViewInit {
   @Input() matchFeatureId: string;
   @Output() onToggle = new EventEmitter<any>();
-
+  @ViewChild('toggleButton') toggleButton: ElementRef;
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private elementRef: ElementRef) {}
 
-  ngOnInit() {
-    let initialState = this.ngRedux.getState().toggles;
+  ngAfterViewInit() {
+    const state = this.ngRedux.getState().toggles;
 
     // update toggle buttons with the intial state
-    if (initialState[this.matchFeatureId]) {
-      this.elementRef.nativeElement
-        .children[0].children[0]
-        .setAttribute('checked', 'checked');
+    if (state[this.matchFeatureId]) {
+      this.toggleButton.nativeElement.setAttribute('checked', 'checked');
     }
   }
 
