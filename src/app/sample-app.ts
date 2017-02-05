@@ -7,8 +7,8 @@ import {
   DevToolsExtension,
   NgRedux,
   select
-} from 'ng2-redux';
-import {NgReduxRouter, UPDATE_LOCATION} from 'ng2-redux-router';
+} from '@angular-redux/store';
+import {NgReduxRouter, UPDATE_LOCATION} from '@angular-redux/router';
 import {createEpicMiddleware} from 'redux-observable';
 import {
   IAppState,
