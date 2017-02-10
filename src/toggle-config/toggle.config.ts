@@ -1,8 +1,8 @@
-import { FeatureToggleConfig } from './toggle.config.types';
+import { IFeatureToggleConfigSet } from './toggle.config.types';
 
-export const featureToggleConfigs = {
-  'feature1': (): FeatureToggleConfig => ({
-    isEnabled: false,
+export const featureToggleConfigs:IFeatureToggleConfigSet = {
+  'feature1': {
+    setting: false,
     responsible: 'Johanna Lee',
     description:
       `This feature toggle is experimental
@@ -15,9 +15,9 @@ export const featureToggleConfigs = {
       remove the attribute directives, *featureid='feature1'
       and hide-feature, in the counter component template
       (src/component/counter.component.ts)`,
-  }),
-  'feature2': (): FeatureToggleConfig => ({
-    isEnabled: true,
+  },
+  'feature2': {
+    setting: true,
     responsible: 'Johanna Lee',
     description:
       `This is a release toggle that hides and shows
@@ -29,5 +29,5 @@ export const featureToggleConfigs = {
       remove the attribute directives, *featureid='feature2',
       in the counter component template(src/component/counter.component.ts)
     `,
-  }),
+  }
 };

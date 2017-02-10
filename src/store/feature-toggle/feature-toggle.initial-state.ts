@@ -3,9 +3,9 @@ import {
   IToggle,
 } from './feature-toggle.types';
 import { makeTypedFactory } from 'typed-immutable-record';
-import { toggleRouter } from '../../services';
+import { ToggleRouter } from '../../services';
 
-const defaultToggle = toggleRouter.getInitialState();
+const defaultToggle = ToggleRouter.getInitialState();
 
 export const ToggleFactory = makeTypedFactory<IToggle, IToggleRecord>(
   defaultToggle

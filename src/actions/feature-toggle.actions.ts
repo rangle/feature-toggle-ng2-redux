@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '../store';
-import { toggleRouter } from '../services';
 
 @Injectable()
 export class FeatureToggleActions {
@@ -9,7 +8,7 @@ export class FeatureToggleActions {
 
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
-  toggleFeatureVisibility(target) {
+  toggleFeatureSetting(target) {
     this.ngRedux.dispatch({
       type: FeatureToggleActions.TOGGLE_FEATURE,
       payload: target,
