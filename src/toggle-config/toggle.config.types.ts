@@ -8,5 +8,5 @@ export interface IFeatureToggleConfig {
 }
 
 export interface IFeatureToggleConfigSet {
-  [propName:string]:IFeatureToggleConfig //https://www.typescriptlang.org/docs/handbook/interfaces.html
+  [propName: string] : IFeatureToggleConfig;
 }

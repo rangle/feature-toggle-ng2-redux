@@ -1,6 +1,6 @@
 import { IFeatureToggleConfigSet } from './toggle.config.types';
 
-export const featureToggleConfigs:IFeatureToggleConfigSet = {
+export const featureToggleConfigs : IFeatureToggleConfigSet = {
   'feature1': {
     setting: false,
     responsible: 'Johanna Lee',

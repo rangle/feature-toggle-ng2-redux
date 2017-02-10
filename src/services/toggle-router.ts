@@ -12,7 +12,7 @@ import {IToggleRecord} from '../store/feature-toggle/feature-toggle.types';
 
 @Injectable()
 export class ToggleRouter {
-  private static configs:IFeatureToggleConfigSet = featureToggleConfigs;
+  private static configs : IFeatureToggleConfigSet = featureToggleConfigs;
   private toggleConfig$ : Observable<IToggleRecord> ;
   private toggleRecord : IToggleRecord;
   constructor(
