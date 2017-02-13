@@ -6,7 +6,7 @@ import {FeatureToggleActions} from '../actions/feature-toggle.actions';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IAppState} from '../store/store';
-import {NgRedux} from 'ng2-redux';
+import {NgRedux} from '@angular-redux/store';
 import {IFeatureToggleConfig, IFeatureToggleConfigSet} from '../toggle-config/toggle.config.types';
 import {IToggleRecord} from '../store/feature-toggle/feature-toggle.types';
 
@@ -51,4 +51,3 @@ export class ToggleRouter {
 
   }
 }
-

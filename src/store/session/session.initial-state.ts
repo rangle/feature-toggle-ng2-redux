@@ -6,7 +6,6 @@ import {
 } from './session.types';
 import { makeTypedFactory } from 'typed-immutable-record';
 
-
 export const UserFactory = makeTypedFactory<IUser, IUserRecord>({
   firstName: null,
   lastName: null

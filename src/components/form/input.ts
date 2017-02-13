@@ -21,7 +21,6 @@ import { ControlBase } from './control';
 
 @Component({
   selector: 'rio-input',
-  providers: [InputActions],
   template: `
     <input
       #model="ngModel"

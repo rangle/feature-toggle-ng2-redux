@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {select} from '@angular-redux/store';
-import {CounterActions} from '../actions';
+import {CounterActions, FeatureToggleActions} from '../actions';
 import {ICounter} from '../store';
 
 @Component({
@@ -16,8 +16,8 @@ import {ICounter} from '../store';
 
       <rio-counter
         [counter]="counter$ | async"
-        (increment)="counterActions.increment()"
-        (decrement)="counterActions.decrement()"
+        (increment)="actions.increment()"
+        (decrement)="actions.decrement()"
         (onToggle)="featureToggleActions.toggleFeatureSetting($event)">
       </rio-counter>
     </rio-container>
@@ -25,5 +25,8 @@ import {ICounter} from '../store';
 })
 export class RioCounterPage {
   @select() private counter$: Observable<ICounter>;
-  constructor(private actions: CounterActions) {}
+  constructor(
+    private actions: CounterActions,
+    private featureToggleActions: FeatureToggleActions,
+  ) {}
 }

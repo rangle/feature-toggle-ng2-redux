@@ -7,15 +7,11 @@ export function featureToggleReducer(
   state: IToggleRecord = INITIAL_STATE,
   action: IPayloadAction
 ): IToggleRecord {
-    switch (action.type) {
-      case FeatureToggleActions.TOGGLE_FEATURE:
-        const payload = action.payload;
-        return state.merge(payload);
-
-      case SessionActions.LOGOUT_USER:
-        return state.merge(INITIAL_STATE);
-
-      default:
-        return state;
-    }
+  switch (action.type) {
+  case FeatureToggleActions.TOGGLE_FEATURE:
+    const payload = action.payload;
+    return state.merge(payload);
+  default:
+    return state;
+  }
 }
