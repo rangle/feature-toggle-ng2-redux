@@ -9,7 +9,6 @@ export class FeatureToggleActions {
   constructor(private ngRedux: NgRedux<IAppState>) {}
 
   toggleFeatureSetting(target) {
-    console.log('hey', this.ngRedux);
     this.ngRedux.dispatch({
       type: FeatureToggleActions.TOGGLE_FEATURE,
       payload: target,

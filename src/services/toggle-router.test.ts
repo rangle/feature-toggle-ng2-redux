@@ -1,9 +1,27 @@
-import { IToggleRecord } from '../store/feature-toggle/feature-toggle.types';
-import { featureToggleReducer } from '../store/feature-toggle/feature-toggle.reducer';
-import { ToggleRouter } from './toggle-router';
 import { Observable } from 'rxjs';
 
+import { IToggleRecord } from '../store/feature-toggle/feature-toggle.types';
+import { featureToggleReducer } from '../store/feature-toggle/feature-toggle.reducer';
+import { FeatureToggleActions } from '../actions/feature-toggle.actions';
+import { ToggleRouter } from './toggle-router';
+
 describe('toggle router', () => {
+  describe('getStateFromConfig(config)', () => {
+    it('returns the toggles state from a config object', () => {
+      const configs = {
+        'feature1': { setting: false },
+        'feature2': { setting: true },
+      };
+
+      const state = ToggleRouter.getStateFromConfig(configs);
+
+      expect(state).toEqual({
+        'feature1': false,
+        'feature2': true,
+      });
+    });
+  });
+
   // let initState: IToggleRecord;
   // let toggleRouter : ToggleRouter;  // TODO: How do I instance this?
   // beforeEach(() => {

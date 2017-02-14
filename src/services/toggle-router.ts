@@ -28,13 +28,14 @@ export class ToggleRouter {
     });
   }
 
+  static getStateFromConfig(configs): any {
+    return Object
+      .keys(configs)
+      .reduce((state, key) => Object.assign({}, state, { [key]: configs[key].setting }), {});
+  }
+
   static getInitialState() {
-    const initialState = {};
-    Object.keys(ToggleRouter.configs).forEach((key) => {
-      const config : IFeatureToggleConfig = ToggleRouter.configs[key];
-      initialState[key] = config.setting;
-    });
-    return initialState;
+    return this.getStateFromConfig(ToggleRouter.configs);
   }
 
   setFeatureState(featureState): void {
