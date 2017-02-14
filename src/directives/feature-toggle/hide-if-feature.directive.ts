@@ -6,7 +6,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../../store';
 
 @Directive({

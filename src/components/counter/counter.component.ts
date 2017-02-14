@@ -12,43 +12,30 @@ import { ICounter } from '../../store';
   template: `
     <div class="flex">
       <rio-button
-      *hideIfFeature="feature1"
-      className="bg-green col-2"
-      (onClick)="decrement.emit()"
-      testid="counter-decrementButton">
-      -
+        *showIfFeature="feature1"
+        className="bg-black col-2"
+        (click)="decrement.emit()"
+        testid="counter-decrementButton">
+        -
       </rio-button>
-
-      <rio-button
-      *showIfFeature="feature1"
-      className="bg-black col-2"
-      (onClick)="decrement.emit()"
-      testid="counter-decrementButton">
-      -
-      </rio-button>
-
       <div
-      data-testid="counter-result"
-      class="flex-auto flex-center center h1">
-      {{ counter.counter }}
+        data-testid="counter-result"
+        class="flex-auto flex-center center h1">
+        {{ counter.counter }}
       </div>
-
       <rio-button className="col-2"
-      *showIfFeature="feature2"
-      (onClick)="increment.emit()"
-      testid="counter-incrementButton">
-      +
+        *showIfFeature="feature2"
+        (click)="increment.emit()"
+        testid="counter-incrementButton">
+        +
       </rio-button>
     </div>
-
     <div class="flex">
       <rio-toggle
         [matchFeatureId]="feature1"
         (onToggle)="decrementBtnOnChange($event)">
       </rio-toggle>
-
       <div class="flex-auto flex-center"></div>
-
       <rio-toggle
         [matchFeatureId]="feature2"
         (onToggle)="incrementBtnOnChange($event)">
@@ -77,4 +64,4 @@ export class RioCounter {
       [this.feature2]: event.target.checked
     });
   }
-};
+}

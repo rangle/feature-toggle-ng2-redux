@@ -1,16 +1,14 @@
-import { Component, Inject, ApplicationRef } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs/Observable';
-import { select } from 'ng2-redux';
-import { CounterActions, FeatureToggleActions } from '../actions';
-import { RioContainer, RioCounter } from '../components';
-import { ICounter } from '../store';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {select} from '@angular-redux/store';
+import {CounterActions, FeatureToggleActions} from '../actions';
+import {ICounter} from '../store';
 
 @Component({
   selector: 'counter-page',
   providers: [ CounterActions ],
   template: `
-    <rio-container testid="counter" [size]=2 [center]=true>
+    <rio-container testid="counter" [size]="2" [center]="true">
       <h2 data-testid="counter-heading" id="qa-counter-heading"
         class="center caps">
         Counter
@@ -18,8 +16,8 @@ import { ICounter } from '../store';
 
       <rio-counter
         [counter]="counter$ | async"
-        (increment)="counterActions.increment()"
-        (decrement)="counterActions.decrement()"
+        (increment)="actions.increment()"
+        (decrement)="actions.decrement()"
         (onToggle)="featureToggleActions.toggleFeatureSetting($event)">
       </rio-counter>
     </rio-container>
@@ -28,7 +26,7 @@ import { ICounter } from '../store';
 export class RioCounterPage {
   @select() private counter$: Observable<ICounter>;
   constructor(
-    private counterActions: CounterActions,
-    private featureToggleActions: FeatureToggleActions
+    private actions: CounterActions,
+    private featureToggleActions: FeatureToggleActions,
   ) {}
 }
