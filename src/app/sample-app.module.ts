@@ -26,9 +26,9 @@ import {RioModalModule} from '../components/modal/modal.module';
 import {RioNavigatorModule} from '../components/navigator/navigator.module';
 
 import {
-  ShowIfFeatureDirective,
-  HideIfFeatureDirective
+  ShowIfFeatureDirective
 } from '../directives/';
+import {ToggleRouter} from '../services/toggle-router';
 
 @NgModule({
   imports: [
@@ -49,8 +49,7 @@ import {
     RioAboutPage,
     RioCounterPage,
     RioCounter,
-    ShowIfFeatureDirective,
-    HideIfFeatureDirective
+    ShowIfFeatureDirective
   ],
   bootstrap: [
     RioSampleApp
@@ -60,7 +59,8 @@ import {
     appRoutingProviders,
     SessionActions,
     SessionEpics,
-    FeatureToggleActions
+    FeatureToggleActions,
+    ToggleRouter
   ]
 })
 export class RioSampleAppModule { }

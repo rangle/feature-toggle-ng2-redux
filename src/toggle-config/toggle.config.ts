@@ -1,5 +1,7 @@
 import { IFeatureToggleConfigSet } from './toggle.config.types';
 
+
+// Beware that the initial settings might be overridden by redux state persistence
 export const featureToggleConfigs : IFeatureToggleConfigSet = {
   'feature1': {
     setting: false,

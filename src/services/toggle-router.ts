@@ -7,9 +7,9 @@ import { featureToggleConfigs } from '../toggle-config';
 import { FeatureToggleActions } from '../actions/feature-toggle.actions';
 import { IToggleRecord } from '../store/feature-toggle/feature-toggle.types';
 import {
-  IFeatureToggleConfig,
   IFeatureToggleConfigSet,
 } from '../toggle-config/toggle.config.types';
+import { ToggleUtil, ParseResult } from './toggle-util';
 
 @Injectable()
 export class ToggleRouter {
@@ -29,9 +29,9 @@ export class ToggleRouter {
   }
 
   static getStateFromConfig(configs): any {
-    return Object
-      .keys(configs)
-      .reduce((state, key) => Object.assign({}, state, { [key]: configs[key].setting }), {});
+      return Object
+        .keys(configs)
+        .reduce((state, key) => Object.assign({}, state, { [key]: configs[key].setting }), {});
   }
 
   static getInitialState() {
@@ -39,18 +39,44 @@ export class ToggleRouter {
   }
 
   setFeatureState(featureState): void {
-    this.featureToggleActions.toggleFeatureSetting(featureState);
+    this.featureToggleActions.toggleFeatureSetting(ToggleUtil.parse(featureState).id);
   }
 
   getFeatureState(toggleId) {
-    return this.toggleRecord.get(toggleId);
+    return this.toggleRecord.get(ToggleUtil.parse(toggleId).id);
+  }
+
+  /**
+   * Returns if a toggle is true or false
+   *
+   * supports ! as first character to negate
+   * supports === in string to check for string equality (e.g. feature1===blue)
+   *
+   * @param toggleIdExpression
+   * @returns {boolean}
+   */
+  isEnabled(toggleIdExpression : string) : boolean {
+    let enabled : boolean;
+    const parts : ParseResult = ToggleUtil.parse(toggleIdExpression);
+    if (parts.hasValue) {
+      enabled = this.getFeatureState(parts.id) === parts.value;
+    } else {
+      const setting = this.getFeatureState(parts.id);
+      enabled = (typeof setting === 'function') ? setting() : !!setting;
+    }
+    return (parts.negated ? !enabled : enabled);
   }
 
   watch(toggleId: string): Observable<any> {
-    // TODO: This will fire whenever any toggle changes,
-    // fix it so it only fires when needed
-    return this.toggleConfig$.map((configSet: IToggleRecord) => {
-      return configSet.get(toggleId);
-    });
+    toggleId = ToggleUtil.stripId(toggleId);
+    return this
+      .toggleConfig$
+      .pairwise()
+      .filter((configSetPair: IToggleRecord[]) => { // stops needless firing
+        return configSetPair[0].get(toggleId) !==  configSetPair[1].get(toggleId);
+      })
+      .map((configSetPair: IToggleRecord[]) => {
+        return configSetPair[1].get(toggleId);
+      });
   }
 }

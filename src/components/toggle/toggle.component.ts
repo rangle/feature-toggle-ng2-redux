@@ -8,8 +8,7 @@ import {
   ViewChild
 } from '@angular/core';
 
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../store';
+import { ToggleRouter } from '../../services/toggle-router';
 
 @Component({
   selector: 'rio-toggle',
@@ -28,14 +27,12 @@ export class RioToggle implements AfterViewInit {
   @Output() onToggle = new EventEmitter<any>();
   @ViewChild('toggleButton') toggleButton: ElementRef;
   constructor(
-    private ngRedux: NgRedux<IAppState>,
-    private elementRef: ElementRef) {}
+    private toggleRouter: ToggleRouter ) {}
 
   ngAfterViewInit() {
-    const state = this.ngRedux.getState().toggles;
 
     // update toggle buttons with the intial state
-    if (state[this.matchFeatureId]) {
+    if (this.toggleRouter.isEnabled(this.matchFeatureId)) {
       this.toggleButton.nativeElement.setAttribute('checked', 'checked');
     }
   }

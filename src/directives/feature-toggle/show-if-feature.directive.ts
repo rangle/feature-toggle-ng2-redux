@@ -6,8 +6,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 
-import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../../store';
+import { ToggleRouter } from '../../services/toggle-router';
 
 @Directive({
   selector: `[showIfFeature]`,
@@ -21,20 +20,19 @@ export class ShowIfFeatureDirective implements OnInit {
   view: any = null;
 
   constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef,
-    private ngRedux: NgRedux<IAppState>) {}
+    private templateRef : TemplateRef<any>,
+    private viewContainer : ViewContainerRef,
+    private toggleRouter : ToggleRouter) {}
 
   // This Directive subscribes toggle button event
   // to add/remove the corresponding element
   ngOnInit() {
     // first time without state change
     this.toggleFeature();
-
-    const unsubscribe = this.ngRedux.subscribe(() => {
+    this.toggleRouter.watch(this.id).subscribe( (newVal) => {
       this.toggleFeature();
-    });
-    // unsubscribe();
+    } );
+    // TODO: Do I need to unsubscribe?
   }
 
   private createView() {
@@ -47,8 +45,7 @@ export class ShowIfFeatureDirective implements OnInit {
   }
 
   private toggleFeature() {
-    const state = this.ngRedux.getState();
-    const isEnabled = state.toggles[this.id];
+    const isEnabled = this.toggleRouter.isEnabled(this.id);
 
     // show component if it's currently hidden and toggle is on
     if (isEnabled && this.view === null) {
