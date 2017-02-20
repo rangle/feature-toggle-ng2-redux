@@ -26,7 +26,7 @@ export class ToggleUtil {
     }
     const hasValue = (toggleIdExpression.indexOf('===') !== -1);
     if (hasValue) {
-      [toggleIdExpression, value] = toggleIdExpression.split('===')[0];
+      [toggleIdExpression, value] = toggleIdExpression.split('===');
     }
     return {
       id: toggleIdExpression,
