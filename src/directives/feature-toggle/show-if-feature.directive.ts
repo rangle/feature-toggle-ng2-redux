@@ -32,7 +32,6 @@ export class ShowIfFeatureDirective implements OnInit {
     this.toggleRouter.watch(this.id).subscribe( (newVal) => {
       this.toggleFeature();
     } );
-    // TODO: Do I need to unsubscribe?
   }
 
   private createView() {
