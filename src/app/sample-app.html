@@ -18,6 +18,11 @@
         class="text-decoration-none">Counter</a>
     </rio-navigator-item>
 
+    <rio-navigator-item *ngIf="loggedIn$ | async" [mr]=true>
+      <a [routerLink]="['/personalized']"
+         class="text-decoration-none">Personalized</a>
+    </rio-navigator-item>
+
     <rio-navigator-item *ngIf="loggedIn$ | async">
       <a [routerLink]="['/about']"
         class="text-decoration-none">About Us</a>

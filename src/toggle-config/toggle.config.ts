@@ -31,5 +31,8 @@ export const featureToggleConfigs : IFeatureToggleConfigSet = {
       remove the attribute directives, *featureid='feature2',
       in the counter component template(src/component/counter.component.ts)
     `,
+  },
+  'cta': {
+    setting: 'contact'
   }
 };
