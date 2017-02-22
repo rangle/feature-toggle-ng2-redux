@@ -26,7 +26,7 @@ export class IPInfo {
 
   constructor (private http: Http) {}
 
-  getIPInfo(ip:string = '') : Observable<IIPInfo> {
+  getIPInfo(ip: string = '') : Observable<IIPInfo> {
     return this.http.get(this.ipURL + ip)
       .map(this.extractData)
       .catch(this.handleError);

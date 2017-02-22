@@ -50,7 +50,7 @@ export class RioPersonalizedPage {
         this.featureToggleActions.toggleFeatureSetting({cta: this.countryToCTA(ipData.countryCode)});
       },
       errors => {
-        console.log(errors)
+        console.log(errors);
       }
     );
   }
