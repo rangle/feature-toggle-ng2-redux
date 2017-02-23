@@ -21,7 +21,6 @@ export class ToggleRouter {
     private ngRedux: NgRedux<IAppState>,
     private featureToggleActions: FeatureToggleActions
   ) {
-    // TODO This cast might be dangerous
     this.toggleConfig$ = <Observable<IToggleRecord>>this.ngRedux.select('toggles');
     this.toggleConfig$.subscribe((toggleRecord: IToggleRecord) => {
       this.toggleRecord = toggleRecord;
@@ -38,8 +37,8 @@ export class ToggleRouter {
     return this.getStateFromConfig(ToggleRouter.configs);
   }
 
-  setFeatureState(featureState): void {
-    this.featureToggleActions.toggleFeatureSetting(ToggleUtil.parse(featureState).id);
+  setFeatureState(featureState : Object): void {
+    this.featureToggleActions.toggleFeatureSetting(featureState);
   }
 
   getFeatureState(toggleId) {

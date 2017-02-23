@@ -4,6 +4,7 @@ import { Http, Response }          from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 export interface IIPInfo {
+  ip: string;
   status? : string;
   country?: string;
   countryCode?: string;
@@ -28,15 +29,18 @@ export class IPInfo {
 
   getIPInfo(ip: string = '') : Observable<IIPInfo> {
     return this.http.get(this.ipURL + ip)
-      .map(this.extractData)
-      .catch(this.handleError);
+      .map(IPInfo.extractData)
+      .map(  (ipInfo: IIPInfo) => { // Tack on IP
+        return Object.assign(ipInfo, {ip: ip});
+      })
+      .catch(IPInfo.handleError);
   }
 
-  private extractData(res: Response) {
+  private static extractData(res: Response) {
     return res.json() || { };
   }
 
-  private handleError (error: Response | any) {
+  private static handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
