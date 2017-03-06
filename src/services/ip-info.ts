@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 export interface IIPInfo {
   ip: string;
-  status? : string;
+  status?: string;
   country?: string;
   countryCode?: string;
   region?: string;
@@ -27,11 +27,11 @@ export class IPInfo {
 
   constructor (private http: Http) {}
 
-  getIPInfo(ip: string = '') : Observable<IIPInfo> {
+  getIPInfo(ip: string = ''): Observable<IIPInfo> {
     return this.http.get(this.ipURL + ip)
       .map(IPInfo.extractData)
       .map(  (ipInfo: IIPInfo) => { // Tack on IP
-        return Object.assign(ipInfo, {ip: ip});
+        return Object.assign({}, ipInfo, {ip: ip});
       })
       .catch(IPInfo.handleError);
   }
