@@ -37,7 +37,7 @@ export class ToggleRouter {
     return this.getStateFromConfig(ToggleRouter.configs);
   }
 
-  setFeatureState(featureState : Object): void {
+  setFeatureState(featureState: Object): void {
     this.featureToggleActions.toggleFeatureSetting(featureState);
   }
 
@@ -54,9 +54,9 @@ export class ToggleRouter {
    * @param toggleIdExpression
    * @returns {boolean}
    */
-  isEnabled(toggleIdExpression : string) : boolean {
-    let enabled : boolean;
-    const parts : ParseResult = ToggleUtil.parse(toggleIdExpression);
+  isEnabled(toggleIdExpression: string): boolean {
+    let enabled: boolean;
+    const parts: ParseResult = ToggleUtil.parse(toggleIdExpression);
     if (parts.hasValue) {
       enabled = this.getFeatureState(parts.id) === parts.value;
     } else {

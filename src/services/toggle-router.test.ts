@@ -46,11 +46,11 @@ describe('toggle router', () => {
   describe('router operations', () => {
     let ngRedux;
     let callChecker;
-    let toggleSetting$ : Observable<any>;
-    let toggleRouter : ToggleRouter;
+    let toggleSetting$: Observable<any>;
+    let toggleRouter: ToggleRouter;
     beforeEach(() => {
       ngRedux = new NgRedux(new MockNgZone() as NgZone);
-      let featureToggleActions : FeatureToggleActions = new FeatureToggleActions(ngRedux);
+      let featureToggleActions: FeatureToggleActions = new FeatureToggleActions(ngRedux);
       toggleRouter  = new ToggleRouter(ngRedux, featureToggleActions);
       TestBed.configureTestingModule({
         providers: [

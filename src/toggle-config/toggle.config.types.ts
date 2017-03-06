@@ -8,5 +8,5 @@ export interface IFeatureToggleConfig {
 }
 
 export interface IFeatureToggleConfigSet {
-  [propName: string] : IFeatureToggleConfig;
+  [propName: string]: IFeatureToggleConfig;
 }

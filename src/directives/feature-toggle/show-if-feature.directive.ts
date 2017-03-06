@@ -20,9 +20,9 @@ export class ShowIfFeatureDirective implements OnInit {
   view: any = null;
 
   constructor(
-    private templateRef : TemplateRef<any>,
-    private viewContainer : ViewContainerRef,
-    private toggleRouter : ToggleRouter) {}
+    private templateRef: TemplateRef<any>,
+    private viewContainer: ViewContainerRef,
+    private toggleRouter: ToggleRouter) {}
 
   // This Directive subscribes toggle button event
   // to add/remove the corresponding element

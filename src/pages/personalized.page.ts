@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import { FeatureToggleActions} from '../actions';
-import {IPInfo, IIPInfo} from '../services/ip-info';
+import { Component } from '@angular/core';
+import { FeatureToggleActions } from '../actions';
+import { IPInfo, IIPInfo } from '../services/ip-info';
 
 @Component({
   selector: 'personalized-page',
@@ -25,10 +25,10 @@ export class RioPersonalizedPage {
   preset: string;
   constructor(
     private featureToggleActions: FeatureToggleActions,
-    private ipInfo : IPInfo
+    private ipInfo: IPInfo
   ) {}
 
-  private countryToCTA (countryCode : string) : string {
+  private countryToCTA (countryCode: string): string {
     switch (countryCode) {
       case 'CA':
         return 'contact';
@@ -44,9 +44,7 @@ export class RioPersonalizedPage {
   }
 
   personalize() {
-    this.ipInfo.getIPInfo(this.ip).subscribe( (ipData : IIPInfo) => {
-        console.log('New IP Info:');
-        console.log(ipData);
+    this.ipInfo.getIPInfo(this.ip).subscribe( (ipData: IIPInfo) => {
         this.featureToggleActions.toggleFeatureSetting({cta: this.countryToCTA(ipData.countryCode)});
       },
       errors => {
