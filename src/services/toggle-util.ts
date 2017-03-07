@@ -7,20 +7,20 @@ export interface ParseResult {
 }
 
 export class ToggleUtil {
-  static stripId(toggleIdExpression : string ) : string {
+  static stripId(toggleIdExpression: string ): string {
     return ToggleUtil.parse(toggleIdExpression).id;
   }
 
-  static stripIds(nameValuePairObject : Object) : Object {
-    return Object.keys(nameValuePairObject).reduce( (newObject, oldKey : string) => {
+  static stripIds(nameValuePairObject: Object): Object {
+    return Object.keys(nameValuePairObject).reduce( (newObject, oldKey: string) => {
       newObject[ToggleUtil.stripId(oldKey)] = nameValuePairObject[oldKey];
       return newObject;
     }, {});
   }
 
-  static parse(toggleIdExpression : string ) : ParseResult {
+  static parse(toggleIdExpression: string ): ParseResult {
     const negated = toggleIdExpression[0] === '!';
-    let value : string = null;
+    let value: string = null;
     if (negated) {
       toggleIdExpression = toggleIdExpression.substr(1);
     }

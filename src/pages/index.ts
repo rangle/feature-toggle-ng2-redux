@@ -1,4 +1,4 @@
 import { RioAboutPage } from './about.page';
 import { RioCounterPage } from './counter.page';
-
-export { RioAboutPage, RioCounterPage };
+import { RioPersonalizedPage } from './personalized.page';
+export { RioAboutPage, RioCounterPage, RioPersonalizedPage };

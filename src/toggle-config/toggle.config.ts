@@ -2,7 +2,7 @@ import { IFeatureToggleConfigSet } from './toggle.config.types';
 
 
 // Beware that the initial settings might be overridden by redux state persistence
-export const featureToggleConfigs : IFeatureToggleConfigSet = {
+export const featureToggleConfigs: IFeatureToggleConfigSet = {
   'feature1': {
     setting: false,
     responsible: 'Johanna Lee',
@@ -31,5 +31,8 @@ export const featureToggleConfigs : IFeatureToggleConfigSet = {
       remove the attribute directives, *featureid='feature2',
       in the counter component template(src/component/counter.component.ts)
     `,
+  },
+  'cta': {
+    setting: 'contact'
   }
 };
