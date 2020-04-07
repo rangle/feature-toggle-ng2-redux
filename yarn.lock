@@ -46,9 +46,10 @@
   version "1.0.30"
   resolved "https://registry.yarnpkg.com/@types/assertion-error/-/assertion-error-1.0.30.tgz#f3d0d5da2ec87b514e30db3ff9a01887b5619c29"
 
-"@types/jasmine@^2.5.35":
+"@types/jasmine@2.5.41":
   version "2.5.41"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.41.tgz#d5e86161a0af80d52062b310a33ed65b051a0713"
+  integrity sha1-1ehhYaCvgNUgYrMQoz7WWwUaBxM=
 
 "@types/node@^6.0.45":
   version "6.0.62"
@@ -5541,6 +5542,11 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-beacon@0.1.x:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/redux-beacon/-/redux-beacon-0.1.2.tgz#2689c18fbc9e978a3f87fefb5d5522dc4f1d911e"
+  integrity sha1-JonBj7yel4o/h/77XVUi3E8dkR4=
+
 redux-localstorage@^0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/redux-localstorage/-/redux-localstorage-0.4.1.tgz#faf6d719c581397294d811473ffcedee065c933c"
@@ -6908,9 +6914,10 @@ window-size@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/window-size/-/window-size-0.2.0.tgz#b4315bb4214a3d7058ebeee892e13fa24d98b075"
 
-winston@^2.1.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-2.3.1.tgz#0b48420d978c01804cf0230b648861598225a119"
+winston@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.4.tgz#a01e4d1d0a103cf4eada6fc1f886b3110d71c34b"
+  integrity sha512-NBo2Pepn4hK4V01UfcWcDlmiVTs7VTB1h7bgnB0rgP146bYhMxX0ypCz3lBOfNxCO4Zuek7yeT+y/zM1OfMw4Q==
   dependencies:
     async "~1.0.0"
     colors "1.0.x"
