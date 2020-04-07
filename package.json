@@ -38,7 +38,7 @@
     "url": "https://github.com/rangle/rangle-starter/issues"
   },
   "dependencies": {
-    "express": "^4.13.4",
+    "express": "^4.17.1",
     "helmet": "^2.0.0",
     "http-proxy": "^1.13.2",
     "redux-beacon": "0.1.x",
